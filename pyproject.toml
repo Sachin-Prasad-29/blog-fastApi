@@ -21,7 +21,7 @@ dev = [
 package = false
 
 [tool.ruff]
-line-length = 88
+line-length = 80
 indent-width = 4
 target-version = "py314"
 
@@ -41,6 +41,9 @@ select = [
 ignore = [
     "B008",   # Do not perform function calls in argument defaults (essential for FastAPI Depends, Query, etc.)
 ]
+unfixable = [
+    "F401",   # Unused imports (prevent deleting imports on save/autofix)
+]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -48,7 +51,3 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 
-
-[tool.djlint]
-profile = "jinja"
-indent = 4

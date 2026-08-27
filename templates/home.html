@@ -1,34 +1,52 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Latest Posts</h1>
-    <p class="text-gray-500 mt-1">Explore our recent thoughts, tutorials, and updates.</p>
-</div>
-<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {% for post in posts %}
-    <article
-        class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200/80 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition duration-200">
-        <div>
+<div class="space-y-10">
+    <!-- Hero / Welcome Section -->
+    <section class="relative overflow-hidden bg-white border border-gray-200 rounded-2xl p-8 sm:p-10 shadow-sm">
+        <div class="max-w-2xl">
+            <!-- Badge -->
             <div
-                class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-3">
-                <span>Article #{{ post.id }}</span>
+                class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full mb-4">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                FastAPI &bull; Jinja2 Powered
             </div>
-            <h2 class="text-xl font-bold text-gray-900 mb-2 leading-snug hover:text-indigo-600 transition">{{ post.title
-                }}</h2>
-            <p class="text-gray-600 text-sm leading-relaxed">{{ post.content }}</p>
-        </div>
-        <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div
-                    class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs">
-                    {{ post.author[0] }}
+
+            <!-- Title & Subtitle -->
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+                Welcome to My Blog
+            </h1>
+            <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-6">
+                This is a simple blog powered by <span class="font-semibold text-gray-800">FastAPI</span> and <span
+                    class="font-semibold text-gray-800">Jinja2</span>. Explore the articles below or check out the
+                interactive API documentation.
+            </p>
+
+            <!-- API Docs Navigation Buttons -->
+            <div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Explore API Documentation
+                </p>
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="/docs" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg shadow-sm transition-all hover:shadow hover:-translate-y-0.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>Swagger Docs</span>
+                        <span class="text-xs bg-emerald-700/70 px-1.5 py-0.5 rounded text-emerald-100">/docs</span>
+                    </a>
+                    <a href="/redoc" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium rounded-lg shadow-sm transition-all hover:shadow hover:-translate-y-0.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <span>Redocly Docs</span>
+                        <span class="text-xs bg-gray-700 px-1.5 py-0.5 rounded text-gray-300">/redoc</span>
+                    </a>
                 </div>
-                <span class="text-xs font-medium text-gray-700">{{ post.author }}</span>
             </div>
-            <span class="text-xs font-semibold text-indigo-600 hover:text-indigo-800">Read &rarr;</span>
-            <span class="text-xs font-semibold text-indigo-600 hover:text-indigo-800">{{ post.date_posted }}</span>
         </div>
-    </article>
-    {% endfor %}
+    </section>
 </div>
 {% endblock content %}
